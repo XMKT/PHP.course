@@ -1,12 +1,20 @@
 <?php
-$foods = array("apple", "orange", "banana", "coconut");
-$foods[0] = "pineapple";
-array_push($foods, "kiwi");
-array_pop($foods);
-foreach ($foods as $food) {
-	echo $food . "<br>";
+$capitals = array(
+	"USA" => "Washington D.C.",
+	"Japan" => "Kyoto",
+	"South Korea" => "Seoul",
+	"India" => "New Delhi"
+);
+$capitals["USA"] = "Las Vegas";
+$capitals["China"] = "Beijing";
+foreach ($capitals as $key => $value) {
+	echo "{$key} = {$value}<br>";
 }
-echo "Number of foods: " . count($foods);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$country = $_POST['country'];
+	$capital = $capitals[$country] ?? "Capital not found.";
+	echo "The capital of {$country} is {$capital}.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +27,11 @@ echo "Number of foods: " . count($foods);
 </head>
 
 <body>
+	<form action="index.php" method="post">
+		<label>Enter a country:</label><br>
+		<input type="text" name="country"><br>
+		<input type="submit" value="Submit">
+	</form>
 </body>
 
 </html>
