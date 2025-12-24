@@ -1,16 +1,13 @@
 <?php
-$capitals = array(
-	"USA" => "Washington D.C.",
-	"Japan" => "Kyoto",
-	"India" => "New Delhi"
-);
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$country = $_POST['country'];
-	$capital = $capitals[$country];
-	echo "The capital of {$country} is {$capital}.";
+if (isset($_POST['login'])) {
+	$username = $_POST['username'];
+	if (empty($username)) {
+		echo "Username is missing.";
+	} else {
+		echo "Hello {$username}";
+	}
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +20,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 	<form action="index.php" method="post">
-		<label>Enter a country:</label><br>
-		<input type="text" name="country"><br>
-		<input type="submit" value="Submit">
+		<label>Username:</label><br>
+		<input type="text" name="username"><br>
+		<label>Password:</label><br>
+		<input type="password" name="password"><br>
+		<input type="submit" value="Login">
 	</form>
+
 </body>
 
 </html>
