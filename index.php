@@ -1,13 +1,12 @@
 <?php
-$seconds = 0;
-$running = true;
-while ($running) {
-	$seconds++;
-	echo "Seconds: {$seconds}<br>";
-	if ($seconds >= 10) { // Условный выход из цикла
-		$running = false;
-	}
+$foods = array("apple", "orange", "banana", "coconut");
+$foods[0] = "pineapple";
+array_push($foods, "kiwi");
+array_pop($foods);
+foreach ($foods as $food) {
+	echo $food . "<br>";
 }
+echo "Number of foods: " . count($foods);
 ?>
 
 <!DOCTYPE html>
