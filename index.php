@@ -1,10 +1,13 @@
 <?php
-$number = -5.75;
-echo abs($number); // 5.75
-echo round($number); // -6
-echo pow(2, 3); // 8
-echo sqrt(16); // 4
-echo rand(1, 100); // Случайное число от 1 до 100
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$radius = $_POST['radius'];
+	$circumference = round(2 * pi() * $radius, 2);
+	$area = round(pi() * pow($radius, 2), 2);
+	$volume = round((4 / 3) * pi() * pow($radius, 3), 2);
+	echo "Circumference: {$circumference} cm<br>";
+	echo "Area: {$area} cm²<br>";
+	echo "Volume: {$volume} cm³<br>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +20,12 @@ echo rand(1, 100); // Случайное число от 1 до 100
 </head>
 
 <body>
+	<form action="index.php" method="post">
+		<label>Radius:</label><br>
+		<input type="text" name="radius"><br>
+		<input type="submit" value="Calculate">
+	</form>
+
 </body>
 
 </html>
