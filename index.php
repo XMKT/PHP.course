@@ -1,8 +1,11 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$counter = $_POST['counter'];
-	for ($i = 1; $i <= $counter; $i++) {
-		echo $i . "<br>";
+$seconds = 0;
+$running = true;
+while ($running) {
+	$seconds++;
+	echo "Seconds: {$seconds}<br>";
+	if ($seconds >= 10) { // Условный выход из цикла
+		$running = false;
 	}
 }
 ?>
@@ -17,11 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-	<form action="index.php" method="post">
-		<label>Enter a number to count up to:</label><br>
-		<input type="text" name="counter"><br>
-		<input type="submit" value="Start">
-	</form>
 </body>
 
 </html>
